@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Student" type="StudentType" />
+    <xs:complexType name="StudentType">
+        <xs:sequence>
+            <xs:element name="studentNo" type="StudentNoType" />
+            <xs:element name="studentName" type="xs:string" />
+            <xs:element name="studentId" type="xs:string" />
+            <xs:element name="studentType" type="StudentTypeEnum" />
+            <xs:element name="studentStatus" type="StudentStatusEnum" />
+            <xs:element name="weekScores" type="WeekScoresType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="StudentNoType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{10}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StudentTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ป.ตรี ปกติ" />
+            <xs:enumeration value="ป.ตรี พิเศษ" />
+            <xs:enumeration value="ป.โท ปกติ" />
+            <xs:enumeration value="ป.โท พิเศษ" />
+            <xs:enumeration value="ป.เอก ปกติ" />
+            <xs:enumeration value="ป.เอก พิเศษ" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StudentStatusEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="audit" />
+            <xs:enumeration value="credit" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="WeekScoresType">
+        <xs:sequence>
+            <xs:element name="week1" type="xs:integer" />
+            <xs:element name="week2" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
