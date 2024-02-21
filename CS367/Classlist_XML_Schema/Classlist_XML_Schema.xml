@@ -1,11 +1,19 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="Student" type="StudentType" />
 
+    <xs:complexType name="NameType">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string" />
+            <xs:element name="lastName" type="xs:string" />
+            <xs:element name="nickName" type="xs:string" />
+            <xs:element name="prefix" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="StudentType">
         <xs:sequence>
             <xs:element name="studentNo" type="StudentNoType" />
-            <xs:element name="studentName" type="xs:string" />
-            <xs:element name="studentId" type="xs:string" />
+            <xs:element name="name" type="NameType" />
             <xs:element name="studentInfo" type="StudentInfoType" />
         </xs:sequence>
     </xs:complexType>
@@ -46,10 +54,18 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:complexType name="TeacherType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" />
+            <xs:element name="name" type="NameType" />
+            <xs:element name="subject" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="SubjectType">
         <xs:sequence>
             <xs:element name="id" type="xs:string" />
-            <xs:element name="teacher" type="xs:string" />
+            <xs:element name="teacher" type="TeacherType" />
             <xs:element name="whenToStudy" type="WhenToStudyType" />
             <xs:element name="weekScores" type="weekScoresType" />
             <xs:element name="totalScore" type="scoreType" />
